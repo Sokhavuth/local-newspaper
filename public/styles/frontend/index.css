@@ -1,0 +1,82 @@
+/* public/styles/index.css */
+
+.Index header{
+    background-color: var(--background-light);
+}
+.Index header .top-header{
+    padding: 5px;
+    background-color: var(--background);
+    color: var(--link);
+    font-size: 16px;
+}
+
+.Index header .top-header .wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+}
+
+.Index header .top-header .wrapper .social-media{
+    text-align: right;
+}
+
+.Index header .top-header .wrapper .social-media img{
+    height: 25px;
+    float: right;
+    padding-left: 5px;
+}
+
+.Index header .inner{
+    display: grid;
+    grid-template-columns: 25% auto 25%;
+    align-items: center;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.Index header .inner .date{
+    text-align: left;
+    font: 18px/1.5 Oswald, Bayon;
+}
+
+.Index header .inner .title{
+    font: 40px/1.5 PirataOne, Koulen;
+}
+
+.Index header .inner .title .description{
+    font: 18px/1 StardosStencil, Bayon;
+}
+
+.Index header .inner form{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.Index header .inner form input{
+    font: var(--bordy-font);
+    padding: 1px 5px;
+}
+
+.Index footer{
+    text-align: center;
+    padding: 30px 0;
+}
+
+@media only screen and (max-width: 600px){
+    .Index header .top-header{
+        padding: 5px 10px;
+    }
+
+    .Index header .inner{
+        grid-template-columns: 100%;
+        padding: 10px;
+    }
+
+    .Index header .inner .date{
+        text-align: center;
+    }
+
+    .Index header .inner form{
+        padding-top: 10px;
+    }
+}

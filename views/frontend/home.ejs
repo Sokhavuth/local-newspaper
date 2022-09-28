@@ -1,0 +1,70 @@
+<!--views/frontend/home.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/home.css" />
+<script src="/scripts/paginate.js"></script>
+
+<div class="feature-post">
+    <% if(data.items){ %>
+        <%
+        if(data.items.length < 5){
+            var condition = data.items.length
+        }else{
+            var condition = 5
+        }
+        %>
+        <% for(let index=0; index<condition; index++){ %>
+            <a href="/post/<%= data.items[index].key %>">
+                <img src="<%= data.items[index].thumb %>" />
+                <% if(data.items[index].videos){ %>
+                <% if((data.items[index].videos !== "")&&(data.items[index].videos !== "[]")){ %>
+                <img class="play-icon" src="/images/play.png" />
+                <% } %>
+                <% } %>
+                <p class="title"><%= data.items[index].title %></p>
+            </a>
+        <%  } %>
+    <% } %>
+</div>
+
+<div class="front-ad">
+    <img src="/images/donate-ad.jpg" />
+    <img src="/images/donate-ad.jpg" />
+</div>
+
+<div class="post-list">
+    <% if(data.items.length > 5){ %>
+        <% for(let index=5; index<data.items.length; index++){ %>
+            <div class="post">
+                <a class="thumb" href="/post/<%= data.items[index].key %>">
+                    <img src="<%= data.items[index].thumb %>" />
+                    <% if(data.items[index].videos){ %>
+                        <% if(data.items[index].videos !== ""){ %>
+                            <% if(data.items[index].videos !== "[]"){ %>
+                                <img class="play-icon" src="/images/play.png" />
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                </a>
+                <div class="wrapper">
+                    <a class="title" href="/post/<%= data.items[index].key %>">
+                        <%= data.items[index].title %>
+                    </a>
+                    <div class="content"><%- data.items[index].content %></div>
+                </div>
+            </div>
+        <% } %>
+    <% } %>
+</div>
+
+<div class="pagination">
+    <p>
+        <% if(data.count - data.page*data.fpostLimit === 1){ %>
+            1 more post
+        <% }else if(data.count - data.page*data.fpostLimit <= 0){ %>
+            no more post
+        <% }else{ %>
+            <%= data.count - data.page*data.fpostLimit %> more posts
+        <% } %>
+    </p>
+    <img class="load" onclick="paginate()" src="/images/loadmore.png" />
+</div>
